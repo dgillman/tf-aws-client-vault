@@ -4,6 +4,27 @@
 
 This project aims to demonstrate the creation of a HashiCorp Vault cluster in AWS, used for securely storing client credentials that be used to gain temporary credentials from the AWS [Security Token Service](https://docs.aws.amazon.com/STS/latest/APIReference/Welcome.html) (STS). In this way, high-level client credentials are protected and available only to those with an adequate need to know. All infrastructure work is performed with the derived (and short-lived) STS tokens.
 
+## Deploy
+1. Create a `backend.conf` file to configure the S3 backend for this project. It will need to specify these variables:
+- bucket
+- key
+- region
+
+2. Initialize the terraform project
+```
+terraform init -backend-config=backend.conf
+```
+
+3. Create plan
+```
+terraform plan -out vault.plan
+```
+
+4. Review the plan, and if it looks acceptable apply it.
+```
+terraform apply vault.plan
+```
+
 ## Design
 
 This module deploys a Vault cluster: multiple EC2 instances, all running the Vault server software, balanced behind an ELB. The number of Vault servers may grow or shrink to meet demand, or to recover from an outage. The cluster number is maintained through an Auto Scaling Group (ASG). The Vault cluster is backed by an encrypted S3 backend.
