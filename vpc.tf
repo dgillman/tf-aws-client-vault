@@ -1,3 +1,4 @@
+# uses community AWS VPC module - could be trimmed down to just VPC, subnet, VPN, and sec groups
 module "vpc" {
   source = "git@github.com:terraform-aws-modules/terraform-aws-vpc.git"
   version = "v1.59.0"

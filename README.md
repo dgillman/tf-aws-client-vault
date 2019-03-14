@@ -40,3 +40,4 @@ This module relies on the [tf-aws-env](https://github.com/dgillman/tf-aws-env) m
   - optionally create private subnet (currently part of VPC module)
   - optionally create VPN (currently part of VPC module)
 - implement kitchen-terraform testing with awspec
+- upgrade to use Consul backend instead of S3

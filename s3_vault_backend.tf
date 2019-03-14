@@ -1,3 +1,4 @@
+# managed S3 encrpytion key via KMS
 resource "aws_kms_key" "vault_backend_key" {
   description = "Vault S3 bucket encryption key"
   deletion_window_in_days = 10
@@ -5,6 +6,7 @@ resource "aws_kms_key" "vault_backend_key" {
   tags = "${module.env.tags}"
 }
 
+# creates an S3 bucket to serve as the Vault backend
 resource "aws_s3_bucket" "vault_s3_bucket" {
   bucket = "${local.vault_bucket}"
   region = "${var.aws_region}"

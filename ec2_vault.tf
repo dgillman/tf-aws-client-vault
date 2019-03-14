@@ -1,0 +1,1 @@
+# placeholder: this will shortly use the HashiCorp terraform-aws-vault module to create ASG of Vault instances
